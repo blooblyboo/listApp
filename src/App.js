@@ -34,15 +34,14 @@ class App extends Component {
    */
   handleAddItem(s, name) {
     var newItemToList = String(s);
-    // this.setState(prevState => {
-
-    //   console.log(prevState);
-    // });
-    this.setState({
-      items: [
-        ...this.state.items,
-        name: newItemToList
-      ]
+    this.setState(prevState => {
+      var items = prevState.items;
+      for(var item in items){
+        if(item.indexOf(name) > -1){
+          items[name].push({name: newItemToList});
+        }
+      }
+      this.setState({ items:{...this.state.items} });
     });
   }
 
