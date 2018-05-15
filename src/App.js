@@ -21,7 +21,9 @@ class App extends Component {
    */
   handleAddList(s) {
       var itemName = String(s);
-      this.setState({ lists: [...this.state.lists, itemName], items: { ...this.state.items, [itemName]: [] } });
+      if(this.state.lists.indexOf(itemName) < 0){
+        this.setState({ lists: [...this.state.lists, itemName], items: { ...this.state.items, [itemName]: [] } });
+      }
   }
 
   /**
